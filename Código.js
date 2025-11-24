@@ -69,7 +69,7 @@ function cargarSolicitudesCentro645AlSheet() {
         // Subir los datos al Google Sheet
         subirDatosAlSheet(datos);
 
-        Logger.log("Solicitudes cargadas exitosamente en el Google Sheet.");
+        console.log("Solicitudes cargadas exitosamente en el Google Sheet.");
     } catch (err) {
         console.error("Error al cargar solicitudes: " + err.message);
     } finally {
@@ -116,23 +116,4 @@ function conexionBD() {
     } catch (err) {
         console.error("Error al conectar a la base de datos: " + err.message);
     }
-}
-
-function guardarConexion() {
-    // Obtenemos las propiedades de tipo "script" (compartidas por todo el script)
-    const scriptProps = PropertiesService.getScriptProperties();
-
-    // Guardamos las propiedades de conexión como un JSON
-    const conexion = JSON.stringify({
-        host: "46.202.151.191",
-        port: 3306,
-        database: "gestionDemanda",
-        user: "appsheet",
-        password: "DasApp$h33t",
-    });
-
-    // Guardamos esa cadena bajo una clave (“MYSQL_CONNECTION”)
-    scriptProps.setProperty("MYSQL_CONNECTION", conexion);
-
-    Logger.log("Propiedades de conexión guardadas.");
 }
